@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
 import './App.css';
+import { Clock } from './components/Clock';
+import { Countdown } from './components/Countdown';
 
 function App() {
+
+  const [message, setMessage] = useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Clock />
+      <Countdown event={e=>setMessage("The world has been destroyed! :(")}/>
+      {
+        message && (
+          <div className='message'>
+            {message}
+          </div>
+        )
+      }
+
+      <a href="https://github.com/sergiss/react-clock" target="_blank"><i className="fa">&#xf09b;</i> Source Code </a>
+    </>
   );
 }
 
 export default App;
+
+
+
